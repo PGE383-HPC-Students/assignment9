@@ -21,7 +21,7 @@ script:
   - nose2
 
 after_success:
-    - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk
+    - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk pgf
     - python texify.py
     - latexmk ${ASSIGNMENT}.tex
     - git config --global user.email ${GIT_EMAIL}
