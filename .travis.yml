@@ -23,7 +23,7 @@ script:
 after_success:
     - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk pgf
     - python texify.py
-    - latexmk ${ASSIGNMENT}.tex
+    - latexmk -pdf ${ASSIGNMENT}.tex
     - git config --global user.email ${GIT_EMAIL}
     - git config --global user.name ${GIT_NAME}
     - git add ${ASSIGNMENT}.pdf
