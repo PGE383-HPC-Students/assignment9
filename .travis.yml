@@ -21,11 +21,12 @@ script:
   - nose2
 
 after_success:
-    - python -c 'from assignment9 import Plotter; p = Plotter("data_1.dat"); p.plot_pgf("ss_plot")'
     - docker pull johntfoster/texlive
-    - docker run --rm -it -v `pwd`:/var/texlive  johntfoster/texlive latexmk ${ASSIGMENT}.tex
+    - python -c 'import matplotlib; matplotlib.use("pgf"); pgf_with_latex = {"pgf.texsystem": "docker run --rm -it johntfoster/texlive pdflatex"}; matplotlib.rcParams.update(pgf_with_latex); from assignment9 import Plotter; p = Plotter("data_1.dat"); p.plot_pgf("ss_plot")'
+    - docker pull johntfoster/texlive
+    - docker run --rm -it -v `pwd`:/var/texlive  johntfoster/texlive latexmk ${ASSIGNMENT}.tex
     - git config --global user.email ${GIT_EMAIL}
     - git config --global user.name ${GIT_NAME}
     - git add ${ASSIGNMENT}.pdf
     - git commit -m "Travis CI autocommit from travis build ${TRAVIS_BUILD_NUMBER} [skip ci]"
-    - git push -fq origin master > /dev/null
+    - git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git master > /dev/null
