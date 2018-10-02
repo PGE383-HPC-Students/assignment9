@@ -1,5 +1,7 @@
 # Homework Assignment 9
 
+[![Build Status](https://travis-ci.com/PGE383-HPC/assignment9.svg?token=SnMGq692xXXqxzyE6QSj&branch=master)](https://travis-ci.com/PGE383-HPC/assignment9)
+
 Open the [Assignment 9 Jupyter Notebook](assignment9.ipynb) and follow the instructions.
 
 ## Testing
