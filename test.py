@@ -1,13 +1,30 @@
 #!/usr/bin/env python
 
-from assignment9 import Plotter
+import unittest
+import nbconvert
+import os
 
 import skimage
 import skimage.measure
 import skimage.transform
 import cv2
-import unittest
 import warnings
+
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+
+
+with open("assignment9.ipynb") as f:
+    exporter = nbconvert.PythonExporter()
+    python_file, _ = exporter.from_file(f)
+
+
+with open("assignment9.py", "w") as f:
+    f.write(python_file)
+
+
+from assignment9 import Plotter
 
 class TestSolution(unittest.TestCase):
     
