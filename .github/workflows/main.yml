@@ -22,4 +22,4 @@ jobs:
       - name: Run LaTeX 
         uses: docker://johntfoster/texlive:latest
         with:
-          entrypoint: ["latexmk", "-pdf", "${ASSIGMENT}.tex"]
+          entrypoint: latexmk -pdf ${ASSIGMENT}.tex
