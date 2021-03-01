@@ -24,6 +24,7 @@ jobs:
         shell: bash -l {0}
         run: |
           shopt -s expand_aliases
+          docker pull texlive/texlive
           alias pdflatex='docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex'
           pdflatex -v
           python texify.py
