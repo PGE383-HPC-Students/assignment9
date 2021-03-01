@@ -23,5 +23,11 @@ jobs:
       - name: Run LaTeX 
         shell: bash -l {0}
         run: |
+          alias pdflatex='docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex'
           python texify.py
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
+          git config user.name 'John T. Foster'
+          git config user.email 'john.foster@utexas.edu'
+          git add ${ASSIGNMENT}.pdf
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
