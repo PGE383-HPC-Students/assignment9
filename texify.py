@@ -2,7 +2,7 @@
 
 import matplotlib 
 import os
-matplotlib.use("module://dockerpgf") 
+matplotlib.use("pgf") 
           
 
 pgf_with_latex = {"pgf.texsystem": 'pdflatex'}

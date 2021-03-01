@@ -23,12 +23,9 @@ jobs:
       - name: Run LaTeX 
         shell: bash -l {0}
         run: |
-          shopt -s expand_aliases
-          docker pull texlive/texlive
-          alias pdflatex="docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex"
-          pdflatex -v
+          sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk pgf
           python texify.py
-          docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
+          latexmk -pdf ${ASSIGNMENT}.tex
           git config user.name 'John T. Foster'
           git config user.email 'john.foster@utexas.edu'
           git add ${ASSIGNMENT}.pdf
