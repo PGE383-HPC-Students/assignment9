@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
 import matplotlib 
+import os
 matplotlib.use("pgf") 
-pgf_with_latex = {"pgf.texsystem": "pdflatex"}
+          
+
+pgf_with_latex = {"pgf.texsystem": 'pdflatex'}
 matplotlib.rcParams.update(pgf_with_latex)
 
 from assignment9 import Plotter 

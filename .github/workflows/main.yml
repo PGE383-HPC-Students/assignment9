@@ -23,6 +23,7 @@ jobs:
       - name: Run LaTeX 
         shell: bash -l {0}
         run: |
+          shopt -s expand_aliases
           alias pdflatex='docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex'
           python texify.py
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
