@@ -25,6 +25,7 @@ jobs:
         run: |
           shopt -s expand_aliases
           alias pdflatex='docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex'
+          pdflatex -v
           python texify.py
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
           git config user.name 'John T. Foster'
