@@ -20,7 +20,8 @@ jobs:
         shell: bash -l {0}
         run: |
           python test.py
-          ls
       - name: Run LaTeX 
         shell: bash -l {0}
-        run: docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
+        run: |
+          ls
+          docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
