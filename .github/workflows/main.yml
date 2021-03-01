@@ -21,9 +21,7 @@ jobs:
         run: |
           python test.py
       - name: Run LaTeX 
-        env:
-          TEXINPUTS: ${PWD}
         shell: bash -l {0}
         run: |
-          ls
+          python texify.py
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
