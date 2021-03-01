@@ -22,5 +22,5 @@ jobs:
       - name: Run LaTeX 
         uses: docker://texlive/texlive:latest
         with:
-          entrypoint: /usr/bin/latexmk -pdf assignment9.tex
+          entrypoint: "/usr/bin/latexmk -pdf assignment9.tex"
 
