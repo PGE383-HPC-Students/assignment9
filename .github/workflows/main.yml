@@ -23,7 +23,7 @@ jobs:
       - name: Run LaTeX 
         shell: bash -l {0}
         run: |
-          sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk pgf
+          sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-latex-recommended texlive-pictures latexmk
           python texify.py
           latexmk -pdf ${ASSIGNMENT}.tex
           git config user.name 'John T. Foster'
