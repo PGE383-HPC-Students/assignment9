@@ -25,7 +25,7 @@ jobs:
         run: |
           shopt -s expand_aliases
           docker pull texlive/texlive
-          alias pdflatex='docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex'
+          alias pdflatex="docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive pdflatex"
           pdflatex -v
           python texify.py
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
