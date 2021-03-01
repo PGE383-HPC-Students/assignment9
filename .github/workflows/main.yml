@@ -20,7 +20,5 @@ jobs:
         shell: bash -l {0}
         run: python test.py
       - name: Run LaTeX 
-        uses: docker://texlive/texlive:latest
-        with:
-          entrypoint: "/usr/bin/latexmk -C"
-
+        shell: bash -l {0}
+        run: docker run --rm -it -v ${PWD}:${PWD} -w ${PWD} texlive/texlive latexmk -pdf ${ASSIGNMENT}.tex
